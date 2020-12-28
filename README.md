@@ -21,5 +21,5 @@ These methods work just like their names.
 
 ## How it works
 
-It reads your /etc/os-release and parase with NFA.
+It reads your /etc/os-release and parase with DFA.
 Information about os-release was found at https://www.freedesktop.org/software/systemd/man/os-release.html and many XML documents are from it.
