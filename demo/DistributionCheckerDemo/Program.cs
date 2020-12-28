@@ -9,7 +9,7 @@ namespace DistributionCheckerDemo
         {
             Console.WriteLine(OperatingSystem.IsLinux()
                 ? $"Your distribution info : {new DistributionChecker().GetDistribution()}"
-                : "You are not running in linux, try in Linux to get the information!");
+                : "You are not running linux, try on Linux to get the information!");
         }
     }
 }
