@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>Enable</Nullable>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>HCGStudio</Authors>
+    <Product>DistributionChecker</Product>
+    <Description>A small library that helps you check your running distribution.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>2020 (c) HCGStudio</Copyright>
+    <RepositoryUrl>https://github.com/HCGStudio/DistributionChecker</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/HCGStudio/DistributionChecker</PackageProjectUrl>
+  </PropertyGroup>
+
+</Project>
