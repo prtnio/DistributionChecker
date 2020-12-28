@@ -1,7 +1,12 @@
 # DistributionChecker
-A small library that helps you check your running distribution.
+A small library that helps you check your running distribution. [Demo](https://github.com/HCGStudio/DistributionChecker/blob/main/demo/DistributionCheckerDemo/Program.cs)
 
-[Demo](https://github.com/HCGStudio/DistributionChecker/blob/main/demo/DistributionCheckerDemo/Program.cs)
+![Nuget](https://img.shields.io/nuget/dt/HCGStudio.DistributionChecker)
+
+Install :
+``` shell
+dotnet add package HCGStudio.DistributionChecker
+```
 
 Usage :
 ``` CSharp
