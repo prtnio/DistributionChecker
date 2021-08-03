@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Versioning;
 using System.Text;
 
 namespace HCGStudio.DistributionChecker
@@ -9,7 +8,6 @@ namespace HCGStudio.DistributionChecker
     /// <summary>
     /// Checker to check linux distribution.
     /// </summary>
-    [SupportedOSPlatform("linux")]
     public class DistributionChecker
     {
         private readonly Dictionary<string, string> _informationDictionary = new();

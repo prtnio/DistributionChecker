@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Versioning;
 
 namespace HCGStudio.DistributionChecker
 {
     /// <summary>
     ///     Linux distribution details got from /etc/os-release
     /// </summary>
-    [SupportedOSPlatform("linux")]
     public record LinuxDistribution
     {
         private readonly Dictionary<string, string>? _raw;
