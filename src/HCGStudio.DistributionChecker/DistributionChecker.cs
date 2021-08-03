@@ -21,101 +21,112 @@ namespace HCGStudio.DistributionChecker
                 throw new PlatformNotSupportedException();
 
             using var file = File.OpenRead("/etc/os-release");
+            using var memoryStream = new MemoryStream(Convert.ToInt32(file.Length));
+            file.CopyTo(memoryStream);
+            ParseOsRelease(memoryStream.ToArray());
+        }
+
+        /// <summary>
+        ///     Convert os-release byte array into _informationDictionary.
+        /// </summary>
+        /// <param name="byteArray">Content of /etc/os-release.</param>
+        private void ParseOsRelease(Array byteArray)
+        {
             var status = 0;
             var sb = new StringBuilder();
             var name = string.Empty;
             var content = string.Empty;
             //NFA
-            for (var c = file.ReadByte(); c != -1; c = file.ReadByte())
+            foreach (var c in byteArray)
             {
                 //We are very sure that /etc/os-release contains no non ASCII char.
-                var b = (char) c;
+                var b = (char)c;
                 switch (status)
                 {
                     case 0:
-                    {
-                        if (char.IsLetterOrDigit(b) || b == '_')
                         {
-                            sb.Append(b);
-                        }
-                        else if (b == '=')
-                        {
-                            name = sb.ToString();
-                            sb.Clear();
-                            status = 1;
-                        }
-                        else
-                        {
-                            throw new FormatException();
-                        }
+                            if (char.IsLetterOrDigit(b) || b == '_')
+                            {
+                                sb.Append(b);
+                            }
+                            else if (b == '=')
+                            {
+                                name = sb.ToString();
+                                sb.Clear();
+                                status = 1;
+                            }
+                            else
+                            {
+                                //throw new FormatException();
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
                     case 1:
-                    {
-                        if (b == '"')
                         {
-                            status = 2;
-                        }
-                        else if (!char.IsControl(b))
-                        {
-                            sb.Append(b);
-                            status = 4;
-                        }
-                        else
-                        {
-                            throw new FormatException();
-                        }
+                            if (b == '"')
+                            {
+                                status = 2;
+                            }
+                            else if (!char.IsControl(b))
+                            {
+                                sb.Append(b);
+                                status = 4;
+                            }
+                            else
+                            {
+                                throw new FormatException();
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
                     case 2:
-                    {
-                        if (b == '"')
                         {
-                            content = sb.ToString();
-                            sb.Clear();
-                            status = 3;
-                        }
-                        else if (!char.IsControl(b))
-                        {
-                            sb.Append(b);
-                        }
-                        else
-                        {
-                            throw new FormatException();
-                        }
+                            if (b == '"')
+                            {
+                                content = sb.ToString();
+                                sb.Clear();
+                                status = 3;
+                            }
+                            else if (!char.IsControl(b))
+                            {
+                                sb.Append(b);
+                            }
+                            else
+                            {
+                                throw new FormatException();
+                            }
 
-                        break;
-                    }
-                    case 3:
-                    {
-                        if (b != '\n')
-                            throw new FormatException();
-                        _informationDictionary.Add(name, content);
-                        status = 0;
-                        break;
-                    }
-                    case 4:
-                    {
-                        if (!char.IsControl(b))
-                        {
-                            sb.Append(b);
+                            break;
                         }
-                        else if (b == '\n')
+                    case 3:
                         {
-                            content = sb.ToString();
-                            sb.Clear();
+                            if (b != '\n')
+                                throw new FormatException();
                             _informationDictionary.Add(name, content);
                             status = 0;
+                            break;
                         }
-                        else
+                    case 4:
                         {
-                            throw new FormatException();
-                        }
+                            if (!char.IsControl(b))
+                            {
+                                sb.Append(b);
+                            }
+                            else if (b == '\n')
+                            {
+                                content = sb.ToString();
+                                sb.Clear();
+                                _informationDictionary.Add(name, content);
+                                status = 0;
+                            }
+                            else
+                            {
+                                throw new FormatException();
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
                 }
             }
         }
