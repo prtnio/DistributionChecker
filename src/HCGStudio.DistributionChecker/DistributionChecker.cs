@@ -27,6 +27,16 @@ namespace HCGStudio.DistributionChecker
         }
 
         /// <summary>
+        ///     Create a new instance using existing content.
+        /// </summary>
+        /// <param name="content">Content of /etc/os-release.</param>
+        public DistributionChecker(string content)
+        {
+            content = content.Replace("\r\n", "\n").Replace("\r", "\n");
+            ParseOsRelease(content.ToCharArray());
+        }
+
+        /// <summary>
         ///     Convert os-release byte array into _informationDictionary.
         /// </summary>
         /// <param name="byteArray">Content of /etc/os-release.</param>
