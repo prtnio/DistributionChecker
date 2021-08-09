@@ -10,11 +10,11 @@
     <Description>A small library that helps you check your running distribution.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>2020 (c) HCGStudio</Copyright>
-    <RepositoryUrl>https://github.com/HCGStudio/DistributionChecker</RepositoryUrl>
     <PackageId>HCGStudio.DistributionChecker</PackageId>
     <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/prtnio/DistributionChecker</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageProjectUrl>https://github.com/HCGStudio/DistributionChecker</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/prtnio/DistributionChecker</PackageProjectUrl>
     <Version>1.1.0</Version>
   </PropertyGroup>
 
