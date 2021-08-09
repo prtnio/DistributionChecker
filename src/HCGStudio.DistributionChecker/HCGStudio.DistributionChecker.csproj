@@ -13,6 +13,7 @@
     <RepositoryUrl>https://github.com/HCGStudio/DistributionChecker</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/HCGStudio/DistributionChecker</PackageProjectUrl>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
 </Project>
