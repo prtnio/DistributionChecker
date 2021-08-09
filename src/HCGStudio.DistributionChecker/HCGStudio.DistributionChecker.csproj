@@ -11,6 +11,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>2020 (c) HCGStudio</Copyright>
     <RepositoryUrl>https://github.com/HCGStudio/DistributionChecker</RepositoryUrl>
+    <PackageId>HCGStudio.DistributionChecker</PackageId>
+    <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/HCGStudio/DistributionChecker</PackageProjectUrl>
     <Version>1.1.0</Version>
