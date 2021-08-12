@@ -6,7 +6,6 @@ namespace HCGStudio.DistributionChecker
     /// <summary>
     /// Extenstion of Linux Distribution
     /// </summary>
-    [SupportedOSPlatform("linux")]
     public static class DistributionExtenstion
     {
         #region Is
